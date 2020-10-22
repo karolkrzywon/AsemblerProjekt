@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>702</width>
-    <height>502</height>
+    <width>697</width>
+    <height>677</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,11 +27,11 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Projekt JA 2020/2021&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Odległość Levenshteina&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Karol Krzywoń&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="odleglosc_label">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>350</y>
+      <x>20</x>
+      <y>520</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -40,11 +40,11 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Odległość:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="czas_label">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>390</y>
+      <x>20</x>
+      <y>570</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>380</x>
-      <y>330</y>
+      <y>520</y>
       <width>81</width>
       <height>16</height>
      </rect>
@@ -69,61 +69,79 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>230</y>
+      <x>0</x>
+      <y>290</y>
       <width>671</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;lub wczytaj z pliku:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;lub &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spinBox">
+   <widget class="QSpinBox" name="watki_spinBox">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>330</y>
+      <y>520</y>
       <width>42</width>
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>32</number>
+    </property>
+    <property name="stepType">
+     <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="slowo1_lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>130</y>
+      <y>160</y>
       <width>671</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="slowo2_lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
+      <y>240</y>
       <width>671</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="sciezkawe_lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>270</y>
+      <y>360</y>
       <width>571</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton">
+   <widget class="QRadioButton" name="c_radioButton">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>370</y>
+      <y>560</y>
       <width>95</width>
       <height>20</height>
      </rect>
@@ -132,11 +150,11 @@
      <string>C++</string>
     </property>
    </widget>
-   <widget class="QRadioButton" name="radioButton_2">
+   <widget class="QRadioButton" name="asm_radioButton">
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>400</y>
+      <y>590</y>
       <width>95</width>
       <height>20</height>
      </rect>
@@ -145,11 +163,11 @@
      <string>Asembler</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="plikwe_pushButton">
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>270</y>
+      <y>360</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -158,30 +176,108 @@
      <string>...</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="uruchom_button">
     <property name="geometry">
      <rect>
-      <x>462</x>
-      <y>370</y>
-      <width>111</width>
-      <height>41</height>
+      <x>430</x>
+      <y>560</y>
+      <width>121</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Uruchom</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="anuluj_button">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>560</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Anuluj</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="plikwy_pushButton">
     <property name="geometry">
      <rect>
       <x>580</x>
-      <y>370</y>
+      <y>450</y>
       <width>101</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>Anuluj</string>
+     <string>...</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>120</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Pierwsze słowo:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>191</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Drugie słowo:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="sciezkawy_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>450</y>
+      <width>571</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>410</y>
+      <width>291</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Ścieżka do pliku wyjściowego:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>320</y>
+      <width>301</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Ścieżka do pliku wejściowego&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
@@ -190,7 +286,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>702</width>
+     <width>697</width>
      <height>26</height>
     </rect>
    </property>
@@ -209,5 +305,76 @@
  <resources>
   <include location="OdlegloscLevenshteina.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>anuluj_button</sender>
+   <signal>clicked()</signal>
+   <receiver>OdlegloscLevenshteinaClass</receiver>
+   <slot>exit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>631</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>636</x>
+     <y>377</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>uruchom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>OdlegloscLevenshteinaClass</receiver>
+   <slot>run()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>438</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>547</x>
+     <y>375</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plikwe_pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OdlegloscLevenshteinaClass</receiver>
+   <slot>wejscie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>626</x>
+     <y>335</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>690</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plikwy_pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>OdlegloscLevenshteinaClass</receiver>
+   <slot>wyjscie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>12</x>
+     <y>427</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>exit()</slot>
+  <slot>run()</slot>
+  <slot>wejscie()</slot>
+  <slot>wyjscie()</slot>
+ </slots>
 </ui>

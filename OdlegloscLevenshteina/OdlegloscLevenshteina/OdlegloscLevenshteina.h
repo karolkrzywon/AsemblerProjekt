@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QFileDialog>
 #include "ui_OdlegloscLevenshteina.h"
 #include <Windows.h>
 #include <iostream>
@@ -16,4 +17,13 @@ public:
 
 private:
     Ui::OdlegloscLevenshteinaClass ui;
+    QString wejscienazwa;
+    QString wyjscienazwa;
+
+private slots:
+        void exit();
+        void run();
+        void wejscie();
+        void wyjscie();
 };
+
