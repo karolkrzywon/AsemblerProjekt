@@ -1,6 +1,7 @@
 #include "OdlegloscLevenshteina.h"
 
-typedef bool(__cdecl* check)();
+typedef int(__cdecl* algo)(string s1, string s2, int rows, int columns);
+
 
 OdlegloscLevenshteina::OdlegloscLevenshteina(QWidget *parent)
     : QMainWindow(parent)
@@ -18,10 +19,11 @@ void OdlegloscLevenshteina::exit()
 void OdlegloscLevenshteina::run()
 {
     HMODULE hModule;
-
-
+    string s1;
+    string s2;
+    int rows;
+    int columns;
     // watki
-
 
     if (ui.asm_radioButton->isChecked())
     {
@@ -32,23 +34,24 @@ void OdlegloscLevenshteina::run()
         hModule = LoadLibrary(TEXT("C:\\Users\\Karol\\source\\repos\\AsemblerProjekt\\OdlegloscLevenshteina\\x64\\Debug\\Cpp.dll"));
     }
 
+    
+    s1 = ui.slowo1_lineEdit->text().toStdString();
+    s2 = ui.slowo2_lineEdit->text().toStdString();
+    rows = s1.length()+1;
+    columns = s2.length()+1;
+
+    
+
     if (hModule == NULL)
     {
         // nie udalo siewczytac jakis dialog
     }
     else
     {
-        check init = (check)GetProcAddress(hModule, "init");
+        algo algorithm = (algo)GetProcAddress(hModule, "algorithm");
+        ui.odleglosc_label->setText(QString::number(algorithm(s1,s2,rows,columns)));
 
-        if (init == NULL)
-        {
-            // jakis blad z dll
-        }
-        else
-        {
-            init();
             FreeLibrary(hModule);
-        }
     }
 }
 
@@ -64,10 +67,11 @@ void OdlegloscLevenshteina::wejscie()
 
 void OdlegloscLevenshteina::wyjscie()
 {
-   wyjscienazwa = QFileDialog::getSaveFileName(this, tr("Save file"), "C://", "Plik tekstowy (*.txt)");
+    wyjscienazwa = QFileDialog::getSaveFileName(this, tr("Save file"), "C://", "Plik tekstowy (*.txt)");
 
    if (wyjscienazwa != NULL)
    {
        ui.sciezkawy_lineEdit->setText(wyjscienazwa);
    }
 }
+

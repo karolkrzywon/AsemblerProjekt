@@ -1,18 +1,9 @@
-
-;								Odleg³oœæ Levenshteina v 0.1.3
-;		
-;										Karol Krzywoñ
-;
-;	Changelog:
-;	- 15.10.2020 - v 0.1.1 - utoworzenie projektu, pocz¹tkowe UI
-;	- 18.10.2020 - v 0.1.2 - poprawa UI, stworzenie repozytorium na GitHubie
-;	- 22.10.2020 - v 0.1.3 - dalsza poprawa GUI - ³adowanie plików wejœciowych i wyjœciowych,
-;							 wczytywanie s³ow do porównania, "uaktywnienie" przycisków,
-;							 stworzenie DLL dla jêzyka asemblerowego i C++
+; Biblioteka DLL bêdzie wykonywaæ czêœæ algorytmu wykonywanego przy obliczaniu odleg³oœci Levenshteina - przyjmowaæ 
+; trzy wartoœci z tablicy i sprawdzaæ, która opcja dodania odleg³oœci edycyjnej jest minimalna
 
 .code					
 init proc					
-	mov rax, 2
+	mov rax, 1
 	ret
 init endp					
 end
