@@ -40,14 +40,14 @@
      <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Odległość:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Odległość:</string>
     </property>
    </widget>
    <widget class="QLabel" name="czas_label">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>570</y>
+      <x>60</x>
+      <y>560</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -56,7 +56,7 @@
      <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Czas:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string> Czas:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -104,7 +104,7 @@
      <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
     </property>
    </widget>
-   <widget class="QLineEdit" name="slowo1_lineEdit">
+   <widget class="LineEdit" name="slowo1_lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -113,8 +113,17 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>IBeamCursor</cursorShape>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="inputMask">
+     <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="slowo2_lineEdit">
@@ -126,8 +135,20 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
     <property name="styleSheet">
      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="inputMask">
+     <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="cursorMoveStyle">
+     <enum>Qt::VisualMoveStyle</enum>
     </property>
    </widget>
    <widget class="QLineEdit" name="sciezkawe_lineEdit">
@@ -289,6 +310,60 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Ścieżka do pliku wejściowego&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="odlegloscwynik_label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>520</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="czaswynik_label">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>570</y>
+      <width>171</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>odleglosc_label</zorder>
+   <zorder>czas_label</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>watki_spinBox</zorder>
+   <zorder>slowo2_lineEdit</zorder>
+   <zorder>sciezkawe_lineEdit</zorder>
+   <zorder>c_radioButton</zorder>
+   <zorder>asm_radioButton</zorder>
+   <zorder>plikwe_pushButton</zorder>
+   <zorder>uruchom_button</zorder>
+   <zorder>anuluj_button</zorder>
+   <zorder>plikwy_pushButton</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>sciezkawy_lineEdit</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_7</zorder>
+   <zorder>odlegloscwynik_label</zorder>
+   <zorder>czaswynik_label</zorder>
+   <zorder>slowo1_lineEdit</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -311,6 +386,13 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>LineEdit</class>
+   <extends>QLineEdit</extends>
+   <header location="global">OdlegloscLevenshteina.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="OdlegloscLevenshteina.qrc"/>
  </resources>
@@ -323,7 +405,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>631</x>
-     <y>425</y>
+     <y>600</y>
     </hint>
     <hint type="destinationlabel">
      <x>636</x>
@@ -339,7 +421,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>509</x>
-     <y>438</y>
+     <y>600</y>
     </hint>
     <hint type="destinationlabel">
      <x>547</x>
@@ -355,7 +437,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>626</x>
-     <y>335</y>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
      <x>690</x>
@@ -370,8 +452,8 @@
    <slot>wyjscie()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>66</x>
-     <y>425</y>
+     <x>580</x>
+     <y>490</y>
     </hint>
     <hint type="destinationlabel">
      <x>12</x>

@@ -1,14 +1,13 @@
 #include "OdlegloscLevenshteina.h"
 
 typedef int(__cdecl* algo)(string s1, string s2, int rows, int columns);
-
+double PCFreq = 0.0;
+__int64 CounterStart = 0;
 
 OdlegloscLevenshteina::OdlegloscLevenshteina(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-
-   
 }
 
 void OdlegloscLevenshteina::exit()
@@ -49,7 +48,9 @@ void OdlegloscLevenshteina::run()
     else
     {
         algo algorithm = (algo)GetProcAddress(hModule, "algorithm");
-        ui.odleglosc_label->setText(QString::number(algorithm(s1,s2,rows,columns)));
+        StartCounter();
+        ui.odlegloscwynik_label->setText(QString::number(algorithm(s1, s2, rows, columns)));
+        ui.czaswynik_label->setText(QString::number(GetCounter())+" ms");
 
             FreeLibrary(hModule);
     }
@@ -74,4 +75,23 @@ void OdlegloscLevenshteina::wyjscie()
        ui.sciezkawy_lineEdit->setText(wyjscienazwa);
    }
 }
+
+void StartCounter()
+{
+    LARGE_INTEGER li;
+    if (!QueryPerformanceFrequency(&li))
+        cout << "QueryPerformanceFrequency failed!";
+
+    PCFreq = double(li.QuadPart) / 1000.0;
+
+    QueryPerformanceCounter(&li);
+    CounterStart = li.QuadPart;
+}
+double GetCounter()
+{
+    LARGE_INTEGER li;
+    QueryPerformanceCounter(&li);
+    return double(li.QuadPart - CounterStart) / PCFreq;
+}
+
 

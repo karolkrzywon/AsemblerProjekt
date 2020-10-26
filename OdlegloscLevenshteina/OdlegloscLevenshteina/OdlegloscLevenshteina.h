@@ -27,3 +27,6 @@ private slots:
         void wyjscie();
 };
 
+
+void StartCounter();
+double GetCounter();
