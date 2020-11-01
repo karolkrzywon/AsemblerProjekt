@@ -4,9 +4,10 @@
 #include <limits.h>
 #include "Cpp.h"
 
-int algorithm(std::string s1,std::string s2,int rows, int columns)
+int algorithm(std::string s1,std::string s2, int rows, int columns)
 {
     int cost;
+
 
     int** a = new int* [rows];//utworzenie tablicy dynamicznej
     for (int i = 0; i < rows; ++i)
@@ -20,7 +21,7 @@ int algorithm(std::string s1,std::string s2,int rows, int columns)
     for (int i = 1; i < rows; i++)
         for (int j = 1; j < columns; j++)
         {
-            if (s1[i - 1] == s2[j - 1])
+            if (s1[i-1] == s2[j-1])
                 cost = 0;
             else
                 cost = 1;
@@ -28,7 +29,7 @@ int algorithm(std::string s1,std::string s2,int rows, int columns)
             a[i][j] = minimum(a[i - 1][j] + 1, a[i][j - 1] + 1, a[i - 1][j - 1] + cost);
         }
 
-    return a[rows - 1][columns - 1];
+    return a[rows-1][columns-1];
 }
 
 int minimum(int x, int y, int z)

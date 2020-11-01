@@ -98,13 +98,13 @@
      <number>1</number>
     </property>
     <property name="maximum">
-     <number>32</number>
+     <number>64</number>
     </property>
     <property name="stepType">
      <enum>QAbstractSpinBox::AdaptiveDecimalStepType</enum>
     </property>
    </widget>
-   <widget class="LineEdit" name="slowo1_lineEdit">
+   <widget class="QLineEdit" name="slowo1_lineEdit">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -386,13 +386,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>LineEdit</class>
-   <extends>QLineEdit</extends>
-   <header location="global">OdlegloscLevenshteina.h</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="OdlegloscLevenshteina.qrc"/>
  </resources>
