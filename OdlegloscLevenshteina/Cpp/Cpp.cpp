@@ -4,11 +4,11 @@
 #include <limits.h>
 #include "Cpp.h"
 
-int algorithm(std::string s1,std::string s2, int rows, int columns)
+int algorithm(int ** a,unsigned char* b, int rows, int columns)
 {
     int cost;
 
-
+    /*
     int** a = new int* [rows];//utworzenie tablicy dynamicznej
     for (int i = 0; i < rows; ++i)
         a[i] = new int[columns];
@@ -17,11 +17,12 @@ int algorithm(std::string s1,std::string s2, int rows, int columns)
         a[i][0] = i;
     for (int j = 1; j < columns; j++)
         a[0][j] = j;
+*/
 
     for (int i = 1; i < rows; i++)
         for (int j = 1; j < columns; j++)
         {
-            if (s1[i-1] == s2[j-1])
+            if (b[i-1] == b[j-1+rows-1])
                 cost = 0;
             else
                 cost = 1;

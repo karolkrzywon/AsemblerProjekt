@@ -1,6 +1,6 @@
 #include "OdlegloscLevenshteina.h"
 
-typedef int(__cdecl* algo)(string s1, string s2, int rows, int columns);
+typedef int(__cdecl* algo)(int** inputArray, unsigned char* inputWord, int rows, int columns);
 double PCFreq = 0.0;
 __int64 CounterStart = 0;
 queue<indata>q;
@@ -88,9 +88,31 @@ void threadfunction(int *distance_tab, HMODULE hModule)
             s1 = buf.s1;
             s2 = buf.s2;
             rows = s1.length() + 1;
-            int columns = s2.length() + 1;
+            columns = s2.length() + 1;
             pos = buf.position;
-            distance_tab[pos] = algorithm(s1, s2, rows, columns);
+
+            int** a = new int* [rows];//utworzenie tablicy dynamicznej
+            for (int i = 0; i < rows; ++i)
+                a[i] = new int[columns];
+
+            for (int i = 0; i < rows; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
+                a[i][0] = i;
+            for (int j = 1; j < columns; j++)
+                a[0][j] = j;
+
+            unsigned char* b = new unsigned char[rows + columns];
+            for (int i = 0; i < rows; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
+                b[i] = s1[i];
+            for (int i = rows; i < rows + columns; i++)
+                b[i] = s2[i];
+
+            distance_tab[pos] = algorithm(a, b, rows, columns);
+
+
+            for (int i = 0; i < rows; ++i)
+                delete[] a[i];
+            delete[] a;
+            delete[] b;
         }
         else
         {
@@ -135,8 +157,31 @@ void OdlegloscLevenshteina::run()
         algo algorithm = (algo)GetProcAddress(hModule, "algorithm");
         int rows = s1.length() + 1;
         int columns = s2.length() + 1;
+
+        int** a = new int* [rows];//utworzenie tablicy dynamicznej
+        for (int i = 0; i < rows; ++i)
+            a[i] = new int[columns];
+
+        for (int i = 0; i < rows; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
+            a[i][0] = i;
+        for (int j = 1; j < columns; j++)
+            a[0][j] = j;
+
+        unsigned char* b = new unsigned char[rows + columns - 2];
+        for (int i = 0; i < rows - 1; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
+            b[i] = s1[i];
+        for (int i = 0; i < columns - 1; i++)
+            b[i+rows-1] = s2[i];
+        
+
         StartCounter();
-        ui.odlegloscwynik_label->setText(QString::number(algorithm(s1, s2, rows, columns)));
+        ui.odlegloscwynik_label->setText(QString::number(algorithm(a, b, rows, columns)));
+
+        for (int i = 0; i < rows; ++i)
+            delete[] a[i];
+        delete[] a;
+        delete[] b;
+
         ui.czaswynik_label->setText(QString::number(GetCounter()) + " ms");
     }
 

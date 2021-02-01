@@ -123,7 +123,10 @@
      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="inputMask">
-     <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>64</number>
     </property>
    </widget>
    <widget class="QLineEdit" name="slowo2_lineEdit">
@@ -142,7 +145,10 @@
      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="inputMask">
-     <string>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>64</number>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Normal</enum>
