@@ -43,7 +43,6 @@ void OdlegloscLevenshteina::loadfromfile()
     }
     else
     {
-        //komunikat o nieudanym wczytaniu pliku
     }
     infile.close();
 }
@@ -61,7 +60,6 @@ void OdlegloscLevenshteina::writetofile(int *distance_tab,int size_of_tab)
     }
     else
     {
-        //komunikat o bledzie
     }
     outfile.close();
 }
@@ -100,11 +98,11 @@ void threadfunction(int *distance_tab, HMODULE hModule)
             for (int j = 1; j < columns; j++)
                 a[0][j] = j;
 
-            unsigned char* b = new unsigned char[rows + columns];
-            for (int i = 0; i < rows; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
+            unsigned char* b = new unsigned char[rows + columns - 2];
+            for (int i = 0; i < rows - 1; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
                 b[i] = s1[i];
-            for (int i = rows; i < rows + columns; i++)
-                b[i] = s2[i];
+            for (int i = 0; i < columns - 1; i++)
+                b[i + rows - 1] = s2[i];
 
             distance_tab[pos] = algorithm(a, b, rows, columns);
 
@@ -162,10 +160,7 @@ void OdlegloscLevenshteina::run()
         for (int i = 0; i < rows; ++i)
             a[i] = new int[columns];
 
-        for (int i = 0; i < rows; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
-            a[i][0] = i;
-        for (int j = 1; j < columns; j++)
-            a[0][j] = j;
+        
 
         unsigned char* b = new unsigned char[rows + columns - 2];
         for (int i = 0; i < rows - 1; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 

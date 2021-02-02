@@ -8,6 +8,6 @@
 #endif
 
 
-extern "C" CPPLIB_API int algorithm(std::string s1, std::string s2, int rows, int columns);
+extern "C" CPPLIB_API int algorithm(int** inputArray, unsigned char* inputWord, int rows, int columns);
 
 int minimum(int x, int y, int z);

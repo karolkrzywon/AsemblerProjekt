@@ -122,7 +122,13 @@
     <property name="styleSheet">
      <string notr="true">font: 12pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
+    <property name="locale">
+     <locale language="English" country="UnitedStates"/>
+    </property>
     <property name="inputMask">
+     <string/>
+    </property>
+    <property name="text">
      <string/>
     </property>
     <property name="maxLength">
