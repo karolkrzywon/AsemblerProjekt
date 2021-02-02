@@ -1,7 +1,16 @@
-;														Odleg³oœæ Levenshteina v0.5
+;														Odleg³oœæ Levenshteina v1.0
 ;
 ;														   autor: Karol Krzywoñ
-
+;	Changelog:
+;	- 11.10.2020 - wersja 0.1.0 - utoworzenie projektu wraz z repozytorium na Githubie
+;	- 15.10.2020 - wersja 0.1.1 - utworzenie szkicu projektu oraz 
+;				   dwóch dodatkowych projektów s³u¿acyh do tworzenia bibliotek dll 
+;	- 17.10.2020 - wesja 0.1.2 - stworzenie GUI
+;	- 19.10.2020 - wersja 0.2 - dodanie funkcji obliczaj¹cej odleg³oœæ levenshteina w c++
+;	- 22.10.2020 - wersja 0.3 - dodanie wczytywania wyrazów z pliku txt - zmiana GUI
+;	- 30.10.2020 - wersja 0.4 - dodanie obs³ugi w¹tków pomiaru czasu dla funkcji dll
+;	- 14.01.2020 - wersja 0.5 - pierwsza wersja biblioteki w asm
+;   - 01.02.2020 - wersja 1.0 - poprawiona biblioteka asm, nale¿ycie skomentowana
 .data
 .code					
 ;
