@@ -3,8 +3,7 @@
 typedef int(__cdecl* algo)(int** inputArray, unsigned char* inputWord, int rows, int columns);
 double PCFreq = 0.0;
 __int64 CounterStart = 0;
-queue<indata>q;
-mutex m;
+vector<string> wektor;
 
 void OdlegloscLevenshteina::loadfromfile()
 {
@@ -35,7 +34,8 @@ void OdlegloscLevenshteina::loadfromfile()
                         s1 = s1 + c;                  
                 }
             }
-            q.push(indata(s1, s2, i++));
+            wektor.push_back(s1);
+            wektor.push_back(s2);
             s1.clear();
             s2.clear();
             sw = 0;
@@ -64,58 +64,39 @@ void OdlegloscLevenshteina::writetofile(int *distance_tab,int size_of_tab)
     outfile.close();
 }
 
-void threadfunction(int *distance_tab, HMODULE hModule)
+void threadfunc(int *distance_tab, HMODULE hModule, vector<string> buf, algo algorithm)
 {
-    algo algorithm = (algo)GetProcAddress(hModule, "algorithm");
-    indata buf;
     string s1;
     string s2;
     int rows;
     int columns;
     int pos;
- 
-    while (!q.empty())
+    
+    for (int i = 0; i < buf.size(); i += 2)
     {
-        m.lock();
-        if (!q.empty())
-        {
-            buf = q.front();
-            q.pop();
-            m.unlock();
+        s1 = buf[i];
+        s2 = buf[i + 1];
+        rows = s1.length() + 1;
+        columns = s2.length() + 1;
+        pos = i / 2;
 
-            s1 = buf.s1;
-            s2 = buf.s2;
-            rows = s1.length() + 1;
-            columns = s2.length() + 1;
-            pos = buf.position;
+        int** a = new int* [rows];//utworzenie tablicy dynamicznej
+        for (int i = 0; i < rows; ++i)
+            a[i] = new int[columns];
 
-            int** a = new int* [rows];//utworzenie tablicy dynamicznej
-            for (int i = 0; i < rows; ++i)
-                a[i] = new int[columns];
+        unsigned char* b = new unsigned char[rows + columns - 2];
+        for (int i = 0; i < rows - 1; i++)
+            b[i] = s1[i];
+        for (int i = 0; i < columns - 1; i++)
+            b[i + rows - 1] = s2[i];
 
-            for (int i = 0; i < rows; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
-                a[i][0] = i;
-            for (int j = 1; j < columns; j++)
-                a[0][j] = j;
-
-            unsigned char* b = new unsigned char[rows + columns - 2];
-            for (int i = 0; i < rows - 1; i++)//wype³nienie pierwszego wiersza i pierwszej kolumny 
-                b[i] = s1[i];
-            for (int i = 0; i < columns - 1; i++)
-                b[i + rows - 1] = s2[i];
-
-            distance_tab[pos] = algorithm(a, b, rows, columns);
+        distance_tab[pos] = algorithm(a, b, rows, columns);
 
 
-            for (int i = 0; i < rows; ++i)
-                delete[] a[i];
-            delete[] a;
-            delete[] b;
-        }
-        else
-        {
-            m.unlock();
-        }
+        for (int i = 0; i < rows; ++i)
+            delete[] a[i];
+        delete[] a;
+        delete[] b;
     }
 }
 
@@ -145,14 +126,13 @@ void OdlegloscLevenshteina::run()
         hModule = LoadLibrary(TEXT("C:\\Users\\Karol\\source\\repos\\AsemblerProjekt\\OdlegloscLevenshteina\\x64\\Debug\\Cpp.dll"));
     }
     
-
+    algo algorithm = (algo)GetProcAddress(hModule, "algorithm");
     s1 = ui.slowo1_lineEdit->text().toStdString();
     s2 = ui.slowo2_lineEdit->text().toStdString();
     int thread_amount = ui.watki_spinBox->value();
  
     if ((s1 != "") || (s2 != ""))
     {
-        algo algorithm = (algo)GetProcAddress(hModule, "algorithm");
         int rows = s1.length() + 1;
         int columns = s2.length() + 1;
 
@@ -183,15 +163,36 @@ void OdlegloscLevenshteina::run()
     if ((ui.sciezkawe_lineEdit->text() != "")&&(ui.sciezkawy_lineEdit->text()!=""))
     {
         loadfromfile();
-        int size_of_tab = q.size();
+        int size_of_tab = wektor.size()/2;
         int* distance_tab;
         distance_tab = new int [size_of_tab];
+        int line_amount = floor(size_of_tab / thread_amount);
         vector<std::thread> threads;
-        
+        vector<vector<string>> pieces;
+        vector<string> buf;
+
+        for (int i = 0; i < thread_amount-1; i++)
+        {
+            for (int j = 0; j < line_amount * 2; j++)
+            {
+                buf.push_back(wektor[2 * line_amount * i + j]);
+            }
+            pieces.push_back(buf);
+            buf.clear();
+        }
+        for (int i = 2 * line_amount * (thread_amount-1); i < wektor.size(); i++)
+        {
+            buf.push_back(wektor[i]);
+        }
+        pieces.push_back(buf);
+
+
+
         StartCounter();
         for (int i = 0; i < thread_amount; i++)
         {
-           threads.push_back(std::thread(threadfunction, std::ref(distance_tab), hModule));
+  
+           threads.push_back(std::thread(threadfunc, std::ref(distance_tab), hModule, pieces[i], algorithm));
         }
 
         for (std::thread& th : threads)
@@ -200,9 +201,11 @@ void OdlegloscLevenshteina::run()
                 th.join();
         }
 
-        ui.czaswynik_label->setText(QString::number(GetCounter()) + " ms");
+        auto time = GetCounter();
+        ui.czaswynik_label->setText(QString::number(time) + " ms");
         writetofile(distance_tab,size_of_tab);
         delete[] distance_tab;
+        wektor.clear();
     }
     FreeLibrary(hModule);
 }

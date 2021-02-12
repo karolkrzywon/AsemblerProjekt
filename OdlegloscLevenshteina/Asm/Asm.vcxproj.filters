@@ -31,11 +31,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LibAsm.asm">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="LibAsm.def">
       <Filter>Source Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="LibAsm.asm">
+      <Filter>Source Files</Filter>
+    </MASM>
   </ItemGroup>
 </Project>
